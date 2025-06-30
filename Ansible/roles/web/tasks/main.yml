@@ -1,0 +1,19 @@
+- name: Install Apache and PHP
+  yum:
+    name:
+      - httpd
+      - php
+      - php-mysqlnd
+    state: present
+
+- name: Start and enable Apache
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Copy web application
+  copy:
+    src: index.php
+    dest: /var/www/html/index.php
+    mode: '0644'

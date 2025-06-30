@@ -1,0 +1,12 @@
+- name: Install MySQL client
+  yum:
+    name: mysql
+    state: present
+
+- name: Create database
+  mysql_db:
+    name: lamp_db
+    state: present
+    login_host: "{{ db_endpoint }}"
+    login_user: admin
+    login_password: SecurePass123!
