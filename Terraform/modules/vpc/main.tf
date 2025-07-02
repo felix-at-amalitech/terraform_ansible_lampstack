@@ -1,20 +1,37 @@
 resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr
+  cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
-  tags = { Name = "lamp-vpc" }
+  tags = {
+    Name = "lamp-vpc"
+  }
 }
 
 resource "aws_subnet" "public" {
-  vpc_id = aws_vpc.main.id
-  cidr_block = var.public_subnet_cidr
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_cidr
   map_public_ip_on_launch = true
-  tags = { Name = "public-subnet" }
+  availability_zone       = var.az1
+  tags = {
+    Name = "public-subnet"
+  }
 }
 
-resource "aws_subnet" "private" {
-  vpc_id = aws_vpc.main.id
-  cidr_block = var.private_subnet_cidr
-  tags = { Name = "private-subnet" }
+resource "aws_subnet" "private_1" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.private_subnet_cidr_1
+  availability_zone = var.az1
+  tags = {
+    Name = "private-subnet-1"
+  }
+}
+
+resource "aws_subnet" "private_2" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.private_subnet_cidr_2
+  availability_zone = var.az2
+  tags = {
+    Name = "private-subnet-2"
+  }
 }
 
 resource "aws_internet_gateway" "igw" {
@@ -30,6 +47,6 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "public" {
-  subnet_id = aws_subnet.public.id
+  subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
 }

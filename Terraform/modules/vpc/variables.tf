@@ -1,14 +1,23 @@
-variable "vpc_cidr" {}
-variable "public_subnet_cidr" {}
-variable "private_subnet_cidr" {}
+variable "vpc_cidr" {
+  type = string
+}
 
-# modules/vpc/outputs.tf
-output "vpc_id" {
-  value = aws_vpc.main.id
+variable "public_subnet_cidr" {
+  type = string
 }
-output "public_subnet_id" {
-  value = aws_subnet.public.id
+
+variable "private_subnet_cidr_1" {
+  type = string
 }
-output "private_subnet_id" {
-  value = aws_subnet.private.id
+
+variable "private_subnet_cidr_2" {
+  type = string
+}
+
+variable "az1" {
+  type = string
+}
+
+variable "az2" {
+  type = string
 }
