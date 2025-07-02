@@ -1,8 +1,24 @@
-variable "vpc_id" {}
-variable "private_subnet_id" {}
-variable "app_security_group_id" {}
+variable "vpc_id" {
+  type = string
+}
 
-# modules/db_tier/outputs.tf
-output "db_endpoint" {
-  value = aws_db_instance.mysql.endpoint
+variable "private_subnet_ids" {
+  type = list(string)
+}
+
+variable "app_security_group_id" {
+  type = string
+}
+
+variable "web_security_group_id" {
+  type = string
+}
+
+variable "region" {
+  type    = string
+  default = "eu-west-1"
+}
+
+variable "db_subnet_group_name" {
+  type = string
 }
