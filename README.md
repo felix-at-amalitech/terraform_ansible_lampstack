@@ -1,6 +1,6 @@
 # LAMP Stack on AWS with Terraform
 
-A complete 3-tier LAMP (Linux, Apache, MySQL, PHP) stack deployed on AWS using Terraform infrastructure as code.
+A complete 3-tier LAMP (Linux, Apache, MySQL, PHP) stack deployed on AWS using Terraform infrastructure as code. Application Running at [healthy fruits](http://52.17.99.30/)
 
 ## 🏗️ Architecture Overview
 
